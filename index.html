@@ -41,14 +41,15 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* ARV number — keep on ONE line, scale smartly to fit */
-    .arv-number {
-      white-space: nowrap;
-      letter-spacing: -0.02em;
-      font-size: clamp(2.75rem, 8vw, 5rem);
+    /* Bulletproof ARV number — forced one line, fluid sizing, beats Tailwind */
+    #arvMid {
+      white-space: nowrap !important;
+      letter-spacing: -0.025em !important;
+      font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+      line-height: 1 !important;
+      overflow: visible;
     }
 
-    /* Subject address — allow wrapping but on word boundaries only */
     .subject-address {
       word-break: normal;
       overflow-wrap: break-word;
@@ -56,7 +57,7 @@
   </style>
 </head>
 <body class="min-h-screen text-zinc-200">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-8 sm:pt-16 lg:pt-20 pb-12 sm:pb-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-16 lg:pt-20 pb-12 sm:pb-24">
 
     <!-- Address input card -->
     <div class="card rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 border border-zinc-800 shadow-2xl">
@@ -81,10 +82,10 @@
     <div id="results" class="hidden mt-8 sm:mt-12 lg:mt-20">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8">
 
-        <!-- ARV card -->
-        <div class="lg:col-span-5 card rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-zinc-800">
+        <!-- ARV card — now col-span-6 (wider) -->
+        <div class="lg:col-span-6 card rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-zinc-800">
           <p class="uppercase text-amber-300 text-[10px] sm:text-xs tracking-[1.5px] sm:tracking-[2px] mb-2">ESTIMATED AFTER-REPAIR VALUE</p>
-          <div id="arvMid" class="display-font arv-number font-light gold leading-none mt-4 sm:mt-6 mb-1">—</div>
+          <div id="arvMid" class="display-font font-light gold mt-4 sm:mt-6 mb-1">—</div>
           <div id="arvRange" class="text-base sm:text-xl lg:text-2xl text-zinc-400">—</div>
           <div id="cachedBadge" class="hidden mt-2 text-[10px] uppercase tracking-widest text-zinc-500">⚡ cached result</div>
 
@@ -99,8 +100,8 @@
           </div>
         </div>
 
-        <!-- Comps card -->
-        <div class="lg:col-span-7 card rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 border border-zinc-800">
+        <!-- Comps card — now col-span-6 (was 7) -->
+        <div class="lg:col-span-6 card rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-zinc-800">
           <h2 class="display-font text-2xl sm:text-3xl font-light mb-5 sm:mb-8">Comparable Sales</h2>
 
           <!-- Table (desktop/tablet) -->
